@@ -1,5 +1,9 @@
 #!/bin/bash
 
-idle_percentage=$(mpstat 1 1 | awk '$12 ~ /[0-9.]+/ { print 100 - $13 }')
+echo "=== SERVER PERFORMANCE STATS ==="
 
-echo "Total CPU Usage: $idle_percentage%"
+uptime
+
+top -bn1 | grep "%Cpu(s):" | cut -d ',' -f 4 | awk '{print "Usage: " 100-$1 "%"}'
+
+echo
