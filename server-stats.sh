@@ -14,3 +14,6 @@ df -h | grep "/" -w | awk '{printf "Total: %sG\nUsed: %s (%.2f%%)\nFree: %s (%.2
 
 echo "---Top 5 Processes by CPU Usage---"
 ps aux --sort=-%cpu --no-headers | head -5 | awk '{printf "%-8s %-8s %-10s %5s %5s %s\n", $2, $3, $1, $3, $4, $11}'
+
+echo "---Top 5 Processes by Memory Usage---"
+ps aux --sort=-%mem --no-headers | head -5 | awk '{printf "%-8s %-8s %-10s %5s %5s %s\n", $2, $3, $1, $3, $4, $11}'
